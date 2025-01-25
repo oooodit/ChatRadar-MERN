@@ -2,27 +2,31 @@ import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema(
     {
-        email:{
+        email: {
             type: String,
             required: true,
             unique: true,
         },
-
-        fullName:{
-            type:String,
-            required:true,
-            minlength:6,
-        },
-        profilePic:{
+        fullName: {
             type: String,
-            default:"",
-        }
+            required: true,
+            minlength: 6,
+        },
+        profilePic: {
+            type: String,
+            default: "",
+        },
+        password: {  
+            type: String,
+            required: true,
+            minlength: 6,
+        },
     },
     {
-        timestamps:true
+        timestamps: true,
     }
 );
- 
-const User = mongoose.model("User",userSchema); //Mongoose need Singularity
+
+const User = mongoose.model("User", userSchema); // Mongoose model must be singular
 
 export default User;
